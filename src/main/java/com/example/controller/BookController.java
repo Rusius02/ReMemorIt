@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController("api/book")
 public class BookController {
 
@@ -19,6 +21,11 @@ public class BookController {
     public BookOutputDto getBook(@RequestBody long id){
         BookOutputDto bookOutputDto = bookService.getBook(id);
         return bookOutputDto;
+    }
+    @GetMapping("getBooks")
+    public List<BookOutputDto> getBooks(){
+        List<BookOutputDto> bookOutputDtos = bookService.getBooks();
+        return bookOutputDtos;
     }
     @PostMapping("create")
     public BookOutputDto createBook(@RequestBody BookInputDto bookInputDto){

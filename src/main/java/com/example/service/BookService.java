@@ -8,6 +8,8 @@ import com.example.repository.IBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -24,7 +26,9 @@ public class BookService {
                 .map(bookMapper::BookToBookOutputDto)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
     }
-
+    public List<BookOutputDto> getBooks() {
+        return bookRepository.findAll().stream().map(bookMapper::BookToBookOutputDto).toList();
+    }
     public void delete(Long id) {
         bookRepository.deleteById(id);
     }
