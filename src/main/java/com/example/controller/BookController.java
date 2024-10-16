@@ -6,6 +6,7 @@ import com.example.model.Book;
 import com.example.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,9 +20,13 @@ public class BookController {
         BookOutputDto bookOutputDto = bookService.getBook(id);
         return bookOutputDto;
     }
-    @GetMapping("create")
+    @PostMapping("create")
     public BookOutputDto createBook(@RequestBody BookInputDto bookInputDto){
         BookOutputDto bookOutputDto = bookService.createBook(bookInputDto);
         return bookOutputDto;
+    }
+    @PostMapping("delete")
+    public void createBook(@RequestBody Long id){
+        bookService.delete(id);
     }
 }
