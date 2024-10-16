@@ -15,9 +15,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
     @GetMapping("getBook")
-    public Book getBook(@RequestBody long id){
-        Book book = new Book();
-        return book;
+    public BookOutputDto getBook(@RequestBody long id){
+        BookOutputDto bookOutputDto = bookService.getBook(id);
+        return bookOutputDto;
     }
     @GetMapping("create")
     public BookOutputDto createBook(@RequestBody BookInputDto bookInputDto){

@@ -19,4 +19,10 @@ public class BookService {
         Book book = bookMapper.BookDTOToBook(bookInputDto);
         return bookMapper.BookToBookOutputDto(bookRepository.save(book));
     }
+    public BookOutputDto getBook(Long id) {
+        return bookRepository.findById(id)
+                .map(bookMapper::BookToBookOutputDto)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+    }
+
 }
