@@ -1,4 +1,4 @@
-package com.example.dtos;
+package com.example.dtos.output;
 
 import lombok.Data;
 
